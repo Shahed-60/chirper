@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('chirps', function (Blueprint $table) {
             $table->id();
+            // deze regel van code zorgt ervoor dat voor elke rij in de huidige tabel, 
+            // er een bijbehorende rij moet zijn in de users tabel. En als die bijbehorende rij in de users tabel wordt verwijderd,
+            //  dan wordt ook de rij in de huidige tabel verwijderd
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('message');
             $table->timestamps();
         });
     }
