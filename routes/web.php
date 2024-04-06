@@ -33,8 +33,9 @@ Route::middleware('auth')->group(function () {
 //De resource-methode is een term die wordt gebruikt om een set van objecten te becschrijven die je kunt aanmaken,
 // lezen, bijwerken en verwijderen(dus eigenlijk de crud) ipv dat ik het helemaal zelf moet schrijven.
 // chirps is de naam van de resource en ChirpController is de controller.
+// De edit methode zou het bewerkingsformulier tonen, en de update methode zou de ingevoerde data valideren en de chirp updaten in de database.
 Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store', 'edit', 'update', 'destroy'])
     // de auth en verified middleware zorgen ervoor dat je alleen kan posten als je bent ingelogd en je email is geverifieerd.
     ->middleware(['auth', 'verified']);
 
